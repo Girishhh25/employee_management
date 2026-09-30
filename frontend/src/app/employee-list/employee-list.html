@@ -1,0 +1,53 @@
+<div class="list-card">
+
+  <div class="list-header">
+    <h2>Employee List</h2>
+    <p>All employees in the organization</p>
+  </div>
+
+  <div class="table-container">
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Department</th>
+          <th>Designation</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.department }}</td>
+          <td>{{ employee.designation }}</td>
+
+          <td>
+            <button
+              type="button"
+              class="edit-button"
+              (click)="editEmployee(employee)"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              class="delete-button"
+              (click)="deleteEmployee(employee.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

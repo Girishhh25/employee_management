@@ -1,0 +1,61 @@
+<div class="form-card">
+
+  <h2>Update Employee</h2>
+
+  <div class="success-message" [hidden]="!successMessage">
+    Employee updated successfully!
+  </div>
+
+  <form (ngSubmit)="updateEmployee()">
+
+    <div class="form-group">
+      <label>Name</label>
+
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="employee.name"
+        placeholder="Enter employee name"
+      >
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="employee.email"
+        placeholder="Enter email address"
+      >
+    </div>
+
+    <div class="form-group">
+      <label>Department</label>
+
+      <input
+        type="text"
+        name="department"
+        [(ngModel)]="employee.department"
+        placeholder="Enter department"
+      >
+    </div>
+
+    <div class="form-group">
+      <label>Designation</label>
+
+      <input
+        type="text"
+        name="designation"
+        [(ngModel)]="employee.designation"
+        placeholder="Enter designation"
+      >
+    </div>
+
+    <button type="submit">
+      Update Employee
+    </button>
+
+  </form>
+
+</div>

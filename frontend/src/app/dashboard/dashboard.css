@@ -1,0 +1,16 @@
+.dashboard {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.dashboard h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.dashboard p {
+  color: #6b7280;
+}
