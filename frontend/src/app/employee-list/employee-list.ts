@@ -2,16 +2,21 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { EmployeeService } from '../employee';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-list',
-  imports: [NgFor],
+  imports: [NgFor, FormsModule],
   templateUrl: './employee-list.html',
   styleUrl: './employee-list.css'
 })
 export class EmployeeList implements OnInit {
 
   employees: any[] = [];
+  filteredEmployees: any[] = [];
+
+  searchText = '';
+
 
   constructor(
     private employeeService: EmployeeService,
@@ -35,6 +40,7 @@ export class EmployeeList implements OnInit {
         console.log('Employee GET Response:', response);
 
         this.employees = response;
+        this.filteredEmployees = response;
 
         // Tell Angular to update the screen
         this.cdr.detectChanges();
@@ -45,6 +51,23 @@ export class EmployeeList implements OnInit {
       }
 
     });
+  }
+
+  searchEmployees(): void {
+
+    const search = this.searchText.toLowerCase().trim();
+
+    if (!search) {
+      this.filteredEmployees = this.employees;
+      return;
+    }
+
+    this.filteredEmployees = this.employees.filter(employee =>
+      employee.name.toLowerCase().includes(search) ||
+      employee.email.toLowerCase().includes(search) ||
+      employee.department.toLowerCase().includes(search) ||
+      employee.designation.toLowerCase().includes(search)
+    );
   }
 
   editEmployee(employee: any) {
